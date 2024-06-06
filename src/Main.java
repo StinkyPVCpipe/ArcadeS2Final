@@ -89,7 +89,7 @@ public class Main
         }
         return "Your seven days is up! Here is the final version of your arcade:" +
                 "\n" + myArcade.printArcade() + "\nAnd your final amount of money made is:" +
-                "" + myArcade.getMoney();
+                "" + myArcade.getMoney() ;
     }
 
 }
