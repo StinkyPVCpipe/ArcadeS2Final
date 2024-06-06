@@ -24,18 +24,24 @@ public class Arcade {
 
     public String RunDayArcade()
     {
+        int busy = (int)Math.random()*3;
+        int cash = 0;
         String output = "";
-        for(int row = 0; row<arcadeGrid.length; row++)
+        for (int row = 0; row < arcadeGrid.length; row++)
         {
-            for(int col = 0; col<arcadeGrid[row].length; col++)
+            for(int col =0; col < arcadeGrid[row].length; col++)
             {
-                if(arcadeGrid[row][col] != null) {
-                    output += "\n" + arcadeGrid[row][col].getName() + "'s profits of the day were " + arcadeGrid[row][col].getDayProfits((int) Math.random() * 3);
+                if(arcadeGrid[row][col] != null)
+                {
+                    cash = arcadeGrid[row][col].getDayProfits(busy);
+                    totalMoney += cash;
+                    output += "The machine " + arcadeGrid[row][col].getName() + " made " + cash + " dollars! \n";
                 }
             }
         }
         return output;
     }
+
     public String printArcade()
     {
         String output = "";

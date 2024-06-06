@@ -1,12 +1,13 @@
 import java.util.ArrayList;
 import java.util.Scanner;
-public class Main {
+public class Main
+{
     public static void main(String[] args) {
 
         CoinOp Polybius = new CoinOp("Polybius", 14, 2, 2, true);
         ArcadeGame PacMan = new CoinOp("PacMan", 8, 1, 1, false);
-        CoinOp SpaceInvaders = new CoinOp("Space Invaders", 10, 3,1, false);
-        CoinOp DigDug = new CoinOp("Dig Dug", 8, 4, 2,true);
+        CoinOp SpaceInvaders = new CoinOp("Space Invaders", 10, 3, 1, false);
+        CoinOp DigDug = new CoinOp("Dig Dug", 8, 4, 2, true);
         CoinOp Aub = new CoinOp("Aub", 10, 2, 2, false);
         ClawGame RAWR = new ClawGame("RAWR", 10, 3, 50, true);
         TwoPlayGame Boyf = new TwoPlayGame("Boyf", 8, 1, 2, false);
@@ -29,8 +30,7 @@ public class Main {
                 "\nthe course of a week!" +
                 "\nTo start off, please enter how big you want your arcade to be(max is 4x4):");
         size = Scan.nextInt();
-        while(size > 4)
-        {
+        while (size > 4) {
             System.out.println("Please enter a size for your arcade that is 4 or less!");
             size = Scan.nextInt();
         }
@@ -40,30 +40,59 @@ public class Main {
         System.out.println("As you can see, its rather empty !! :(!");
         System.out.println("Lets go to the store and see what we can buy!");
         input = Scan.nextLine();
-        while (!input.equals("S"))
-        {
+        while (!input.equals("S")) {
             System.out.println("Press S to go to the store.");
             input = Scan.nextLine();
         }
-       myArcade.addGame(staure.buyStuff(myArcade, games));
+        myArcade.addGame(staure.buyStuff(myArcade, games));
         System.out.println("Welcome back! Hopefully it wasn't too harsh on your budget..." +
                 "\nLets see what your arcade looks like now!");
         System.out.println("Press A to view your arcade");
         input = Scan.nextLine();
-        while(!input.equals("A"))
-        {
+        while (!input.equals("A")) {
             System.out.println("Press A to view your arcade.");
             input = Scan.nextLine();
         }
         System.out.println(myArcade.printArcade());
         System.out.println("Isn't she beautiful? Why don't you go ahead and press 'R' to run through a day to make some more money?");
         input = Scan.nextLine();
-        while(!input.equals("R"))
-        {
+        while (!input.equals("R")) {
             System.out.println("Press 'R' to run through a day~!");
             input = Scan.nextLine();
         }
-    System.out.println(myArcade.RunDayArcade());
+        System.out.println(myArcade.RunDayArcade());
+    }
+
+    public String playGame(Scanner scan, Arcade myArcade, ArcadeStore staure, ArrayList<ArcadeGame> games) {
+        String input = "0";
+        boolean playing = true;
+        int days = 1;
+        while (playing) {
+            if (input.equals("0")) {
+                System.out.println("You are now free to go through the week! try to make as much money as possible!" +
+                        "Press S to go to the Store and buy a new game, press A to view your arcade, press R to run through a day!");
+            }
+            input = scan.nextLine();
+            if (input.equals("S")) {
+                myArcade.addGame(staure.buyStuff(myArcade, games));
+            }
+            if (input.equals("A")) {
+                System.out.println(myArcade.printArcade());
+            }
+            if (input.equals("R")) {
+                System.out.println(myArcade.RunDayArcade());
+                days++;
+            }
+            if (days == 7) {
+                playing = false;
+            }
+        }
+        return "Your seven days is up! Here is the final version of your arcade:" +
+                "\n" + myArcade.printArcade() + "\nAnd your final amount of money made is:" +
+                "" + myArcade.getMoney();
+    }
+
+}
 
 
 //        //ArcadeGame Polybius = new ArcadeGame("Polybius", 14, 2, 2, true);
@@ -73,7 +102,3 @@ public class Main {
 //        myArcade.addGame(PacMan);
 //
 //        System.out.println(myArcade.printArcade());
-
-
-    }
-}

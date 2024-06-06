@@ -3,26 +3,7 @@ import java.util.ArrayList;
 public class ArcadeStore
 {
     private double money;
-    /*
-    //finna store all the arcade games period ah period uh
-    ArcadeGame Polybius = new ArcadeGame("Polybius", 14, 2, 2, true);
-    ArcadeGame PacMan = new ArcadeGame("PacMan", 8, 1, 1, false);
-    ArcadeGame SpaceInvaders = new ArcadeGame("Space Invaders", 10, 3,1, false);
-    ArcadeGame DigDug = new ArcadeGame("Dig Dug", 8, 4, 2,true);
-    // ArcadeGame
 
-//    private ArcadeGame[] games = new ArcadeGame[16];
-//    games[0] = Polybius;
-//    games[1] = PacMan;
-//    games[2] = SpaceInvaders;
-//    games[3] = DigDug;
-
-    ArrayList<ArcadeGame> games = new ArrayList<ArcadeGame>();
-    games.add(Polybius);
-    games.add(PacMan);
-    games.add(SpaceInvaders);
-    games.add(DigDug);
-*/
     Scanner Scan = new Scanner(System.in);
     public ArcadeStore(double money)
     {
