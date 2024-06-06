@@ -3,7 +3,11 @@ import java.util.Scanner;
 public class Main
 {
     public static void main(String[] args) {
+        System.out.println(tutorial());
+    }//gurl what
 
+    public static String tutorial()
+    {
         CoinOp Polybius = new CoinOp("Polybius", 14, 2, 2, true);
         ArcadeGame PacMan = new CoinOp("PacMan", 8, 1, 1, false);
         CoinOp SpaceInvaders = new CoinOp("Space Invaders", 10, 3, 1, false);
@@ -61,27 +65,34 @@ public class Main
             input = Scan.nextLine();
         }
         System.out.println(myArcade.RunDayArcade());
+        return(playGame(Scan, myArcade, staure, games));
     }
 
-    public String playGame(Scanner scan, Arcade myArcade, ArcadeStore staure, ArrayList<ArcadeGame> games) {
+    public static String playGame(Scanner scan, Arcade myArcade, ArcadeStore staure, ArrayList<ArcadeGame> games) {
         String input = "0";
         boolean playing = true;
         int days = 1;
+        double money = 0;
+        System.out.println("You are now free to go through the week! try to make as much money as possible!");
         while (playing) {
             if (input.equals("0")) {
-                System.out.println("You are now free to go through the week! try to make as much money as possible!" +
-                        "Press S to go to the Store and buy a new game, press A to view your arcade, press R to run through a day!");
+                System.out.println("Press S to go to the Store and buy a new game \npress A to view your arcade \npress R to run through a day!");
             }
             input = scan.nextLine();
             if (input.equals("S")) {
                 myArcade.addGame(staure.buyStuff(myArcade, games));
+                input = "0";
             }
             if (input.equals("A")) {
                 System.out.println(myArcade.printArcade());
+                input = "0";
             }
             if (input.equals("R")) {
                 System.out.println(myArcade.RunDayArcade());
                 days++;
+                money = myArcade.getMoney();
+                staure.addMoney((int)money);
+                input = "0";
             }
             if (days == 7) {
                 playing = false;
